@@ -1,0 +1,9 @@
+name = Dropkick Ajax
+description = Integrate dropkick plugin with Drupal behaviors
+core = 7.x
+package = My Modules
+version = 7.x-1.x-dev
+
+;You must add this css in the .info file of your current theme, not here
+stylesheets[all][] = css/dropkick.css
+stylesheets[all][] = css/app.css

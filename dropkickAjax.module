@@ -1,0 +1,67 @@
+<?php
+//hook_init()
+function dropkickAjax_init(){
+	drupal_add_js('misc/jquery.form.js');  
+	drupal_add_library('system', 'drupal.ajax');
+
+	drupal_add_js(array('dropkick_dynamic' => 'dropkick_dynamic'), 'setting');
+	drupal_add_js(drupal_get_path('module','dropkickAjax').'/js/behaviors.js');
+
+	// You must add this js in the .info file of your current theme, not here
+	drupal_add_js(drupal_get_path('module','dropkickAjax').'/js/jquery-1.10.1.min.js');
+	drupal_add_js(drupal_get_path('module','dropkickAjax').'/js/jquery.dropkick-1.0.0.js');
+	drupal_add_js(drupal_get_path('module','dropkickAjax').'/js/app.js');
+}
+//hook_menu()
+function dropkickAjax_menu(){
+	$items = array();
+	$items['dropkick_dynamic/ajax'] = array(
+		'page callback' => 'dropkick_dynamic_ajax_func',
+		'access callback' => 'user_access',
+		'access arguments' => array('access content'),
+		'delivery callback' => 'ajax_deliver',
+		'page arguments' => array(1),
+		'type' => MENU_CALLBACK,
+		'file' => 'includes/dropkick_ajax.func.inc',
+	);
+	return $items;
+}
+//hook_block_info()
+function dropkickAjax_block_info(){
+  $blocks['dropkick_ajax_block'] = array(
+    'info' => t('Dropkick Ajax: Sample dropkick'), 
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+//hook_block_view()
+function dropkickAjax_block_view($delta = ''){
+	$block = array();
+	switch ($delta) {
+		case 'dropkick_ajax_block':
+			$block['content'] = theme('dropkick_ajax_block',array('rows' => null));
+		break;
+	}
+	return $block;
+}
+//hook_theme()
+function dropkickAjax_theme($existing, $type, $theme, $path){
+	return array(
+		'dropkick_ajax_block' => array(
+			'variables' => array('rows' => NULL),
+			'template' => 'templates/dropkick_ajax_block'
+		),
+        'dropdown' => array(
+            'variables' => array('valores' => array(),'valor_defecto' => '','ide'=>'','class' =>'' , 'name' => ''),
+            'template' => 'templates/dropdown',
+        ),
+	);
+}
+
+function ajax_command_create_dropkick($selector, $html, $settings = NULL) {
+  return array(
+    'command' => 'create_dropkick',
+    'selector' => $selector,
+    'settings' => $settings,
+  );
+}

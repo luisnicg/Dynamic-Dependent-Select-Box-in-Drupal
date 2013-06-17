@@ -1,0 +1,59 @@
+.box {
+	width:100%;
+}
+.column-left{
+	float:left;
+	width:49%;
+}
+.column-right {
+	float:right;
+	width:49%;
+}
+.clear{
+	clear: both;
+}
+
+/* throbber CSS */
+
+.ajax-progress-throbber {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent; rgba(255,255,255,.5);
+}
+
+.ajax-progress-throbber .message {
+    display: none;
+}
+
+.ajax-progress-throbber .throbber {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+
+    width: 25px;
+    height: 25px;
+    margin: -12px 0 0 -12px;
+
+    background-color: #fff;
+    background-position: 6px -14px;
+
+    -khtml-box-shadow: 0px 0px 5px 6px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 0px 5px 6px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0px 0px 5px 6px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 5px 6px rgba(0,0,0,.1);
+
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+}
