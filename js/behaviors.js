@@ -10,7 +10,7 @@
 				$(this).trigger('dropkick_dynamic');
 				return false;
 			});
-			$('.default:not(.ajax-processed)',context).addClass('ajax-processed').each(function () {
+			$('.default:not(.ajax-default-processed)',context).addClass('ajax-default-processed').each(function () {
 				var base = $(this).attr('id');
 				var submit = {js:true};
 				var posted = Drupal.settings.basePath+Drupal.settings.dropkick_dynamic+'/nojs';

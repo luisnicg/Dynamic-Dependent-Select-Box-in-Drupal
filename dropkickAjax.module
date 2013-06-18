@@ -1,6 +1,7 @@
 <?php
 //hook_init()
 function dropkickAjax_init(){
+	// Add the neccesary libraries
 	drupal_add_js('misc/jquery.form.js');  
 	drupal_add_library('system', 'drupal.ajax');
 
@@ -15,6 +16,7 @@ function dropkickAjax_init(){
 //hook_menu()
 function dropkickAjax_menu(){
 	$items = array();
+	// Create a virtual url with a response ajax
 	$items['dropkick_dynamic/ajax'] = array(
 		'page callback' => 'dropkick_dynamic_ajax_func',
 		'access callback' => 'user_access',
@@ -58,6 +60,7 @@ function dropkickAjax_theme($existing, $type, $theme, $path){
 	);
 }
 
+// Create a custom ajax command, is necesary for create a Dropkick
 function ajax_command_create_dropkick($selector, $html, $settings = NULL) {
   return array(
     'command' => 'create_dropkick',
